@@ -10,7 +10,7 @@
         Width="400"
         WindowStyle="None"
         AllowsTransparency="True"
-        MouseLeftButtonDown="onMouseLeftButtonDown" Background="Transparent">
+        MouseLeftButtonDown="onMouseLeftButtonDown" Background="Transparent" MouseLeftButtonUp="onMouseLeftButtonUp" LocationChanged="onLocationChanged">
     <Grid Background="Transparent">
         <local:GBall Panel.ZIndex="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
         <local:GInput Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>

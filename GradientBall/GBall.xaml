@@ -9,10 +9,11 @@
     <UserControl.Resources>
         <Storyboard x:Key="RotateA">
             <DoubleAnimationUsingKeyFrames
-                                        BeginTime="0:0:0" Duration="0:0:2"
-                                        RepeatBehavior="0:0:2"
-                                        Storyboard.TargetName="targetRect"
-                                        Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
+                BeginTime="0:0:0"
+                Duration="0:0:2"
+                RepeatBehavior="Forever"
+                Storyboard.TargetName="targetRect"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)">
                 <LinearDoubleKeyFrame Value="0"/>
                 <LinearDoubleKeyFrame Value="360"/>
                 <LinearDoubleKeyFrame Value="720"/>
@@ -32,10 +33,18 @@
                 Storyboard.TargetName="logoImage"
                 Storyboard.TargetProperty="(Canvas.Top)"
                 BeginTime="0:0:0"
-                Duration="0:0:1"
-                RepeatBehavior="Forever"
+                Duration="0:0:0.1"
+                RepeatBehavior="0:0:0.1"
                 From="30"
                 To="10"/>
+            <DoubleAnimation
+                Storyboard.TargetName="logoImage"
+                Storyboard.TargetProperty="(Canvas.Top)"
+                BeginTime="0:0:0"
+                Duration="0:0:0.1"
+                RepeatBehavior="0:0:0.1"
+                From="10"
+                To="30"/>
         </Storyboard>
         <LinearGradientBrush x:Key="BackGradient" StartPoint="0,0" EndPoint="1,1" Opacity="0.8">
             <GradientStop Offset="0.0" Color="Azure"/>
@@ -44,26 +53,31 @@
         </LinearGradientBrush>
     </UserControl.Resources>
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="UserControl.Loaded">
+        <EventTrigger RoutedEvent="UserControl.MouseLeftButtonDown">
             <BeginStoryboard Storyboard="{StaticResource RotateA}"/>
             <BeginStoryboard Storyboard="{StaticResource JumpB}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <Canvas Width="120" Height="120">
-        <Canvas.Clip>
+    <!--<Button x:Name="mainButton" Width="120" Height="120">
+        <Button.Clip>
             <EllipseGeometry Center="60, 60" RadiusX="60" RadiusY="60"/>
-        </Canvas.Clip>
-        <Rectangle x:Name="backRect" Canvas.Top="0" Canvas.Left="0" Width="120" Height="120" Fill="{StaticResource BackGradient}"/>
-        <Rectangle Panel.ZIndex="10" x:Name="targetRect" Canvas.Top="10" Canvas.Left="10" Width="100" Height="100"  Fill="{StaticResource BackGradient}">
-            <Rectangle.Clip>
-                <EllipseGeometry Center="50, 50" RadiusX="50" RadiusY="50"/>
-            </Rectangle.Clip>
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform CenterX="50" CenterY="50" Angle="0"/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Image x:Name="logoImage" Panel.ZIndex="100" Canvas.Top="30" Canvas.Left="30" Width="60" Height="60" Source="/Token.png"/>
-    </Canvas>
+        </Button.Clip>-->
+        <Canvas Width="120" Height="120">
+            <Canvas.Clip>
+                <EllipseGeometry Center="60, 60" RadiusX="60" RadiusY="60"/>
+            </Canvas.Clip>
+            <Rectangle x:Name="backRect" Canvas.Top="0" Canvas.Left="0" Width="120" Height="120" Fill="{StaticResource BackGradient}"/>
+            <Rectangle Panel.ZIndex="10" x:Name="targetRect" Canvas.Top="10" Canvas.Left="10" Width="100" Height="100"  Fill="{StaticResource BackGradient}">
+                <Rectangle.Clip>
+                    <EllipseGeometry Center="50, 50" RadiusX="50" RadiusY="50"/>
+                </Rectangle.Clip>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform CenterX="50" CenterY="50" Angle="0"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image x:Name="logoImage" Panel.ZIndex="100" Canvas.Top="30" Canvas.Left="30" Width="60" Height="60" Source="/Token.png"/>
+        </Canvas>
+    <!--</Button>-->
 </UserControl>
