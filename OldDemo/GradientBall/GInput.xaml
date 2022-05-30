@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="GradientBall.GInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GradientBall"
+             mc:Ignorable="d" 
+             d:DesignHeight="{Binding Height}"
+             d:DesignWidth="{Binding Width}">
+    <UserControl.DataContext>
+        <local:GInputModel x:Name="Model"/>
+    </UserControl.DataContext>
+    <Canvas Width="{Binding Width}" Height="{Binding Height}">
+        <Rectangle Panel.ZIndex="10" Canvas.Top="0" Canvas.Left="0" Width="{Binding Width}" Height="{Binding Height}">
+            <Rectangle.Clip>
+                <RectangleGeometry Rect="{Binding BigRect}" RadiusX="{Binding BigRadius}" RadiusY="{Binding BigRadius}"/>
+            </Rectangle.Clip>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
+                    <GradientStop Offset="0.0" Color="#EDEDED"/>
+                    <GradientStop Offset="0.51" Color="#EAEAEA"/>
+                    <GradientStop Offset="1.0" Color="#EDEDED"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle
+            Canvas.Top="{Binding SmallTop}"
+            Canvas.Left="{Binding SmallLeft}"
+            Width="{Binding SmallWidth}"
+            Height="{Binding SmallHeight}"
+            Panel.ZIndex="100"
+            Fill="White">
+            <Rectangle.Clip>
+                <RectangleGeometry Rect="{Binding SmallRect}" RadiusX="{Binding SmallRadius}" RadiusY="{Binding SmallRadius}"/>
+            </Rectangle.Clip>
+        </Rectangle>
+        <TextBox Panel.ZIndex="1000" Canvas.Top="{Binding InputTop}" Canvas.Left="{Binding InputLeft}" Width="{Binding InputWidth}" Height="{Binding InputHeight}"/>
+    </Canvas>
+</UserControl>
