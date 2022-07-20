@@ -4,6 +4,73 @@
              xmlns:local="clr-namespace:CustomDemo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="ChromeStyle" TargetType="{x:Type local:MainWindow}">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome
+                        GlassFrameThickness="0 0 0 0"
+                        WindowChrome.NonClientFrameEdges="Bottom,Left,Right"
+                        WindowChrome.CaptionHeight="0"
+                        >
+
+                    </WindowChrome>
+                </Setter.Value>
+            </Setter>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Grid>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+                                <Button>aaaa5</Button>
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+                                <Button>aaaa5</Button>
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+                                <Button>aaaa5</Button>
+                                <Button>aaaa</Button>
+                                <Button>aaaa2</Button>
+                                <Button>aaa3</Button>
+                                <Button>aaaa4</Button>
+
+                                <Button>aaaa5</Button>
+                                <Button>aaaa5</Button>
+                                <Button>aaaa5</Button>
+                                <Button>aaaa5</Button>
+                            </StackPanel>
+                            <Border Grid.Row="1" Background="Transparent" BorderThickness="3" Margin="3,3,3,3">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </Border>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

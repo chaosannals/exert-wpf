@@ -29,5 +29,11 @@ namespace CustomDemo
         {
             cFieldControl.MyBool = !cFieldControl.MyBool;
         }
+
+        private void onMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("Grid MLBD");
+            DragMove();
+        }
     }
 }
