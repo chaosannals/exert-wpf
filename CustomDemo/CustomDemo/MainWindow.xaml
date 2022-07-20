@@ -8,12 +8,12 @@
         Title="MainWindow" Height="450" Width="800"
         >
     <WindowChrome.WindowChrome>
-        <WindowChrome
+        <!--<WindowChrome
             GlassFrameThickness="1 30 1 1"
             WindowChrome.NonClientFrameEdges="None"
             WindowChrome.CaptionHeight="5"
-            >
-            
+            >-->
+        <WindowChrome>
         </WindowChrome>
     </WindowChrome.WindowChrome>
     <Window.Template>
@@ -22,8 +22,13 @@
                 <Rectangle Grid.Row="0" MouseLeftButtonDown="onMouseLeftButtonDown" Height="30" Fill="Transparent">
 
                 </Rectangle>
-                <StackPanel Grid.Row="0" Margin="0,5,0,0" Orientation="Horizontal">
-
+                <StackPanel
+                    Grid.Row="0"
+                    Margin="0,5,0,0"
+                    Orientation="Horizontal"
+                    WindowChrome.IsHitTestVisibleInChrome="True"
+                >
+                    <!-- WindowChrome.IsHitTestVisibleInChrome 打开 Hit 测试，不然组件会被标题栏屏蔽事件-->
                     <Button>aaaa</Button>
                     <Button>aaaa2</Button>
                     <Button>aaa3</Button>
