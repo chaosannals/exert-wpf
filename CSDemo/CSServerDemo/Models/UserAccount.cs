@@ -2,7 +2,7 @@
 
 namespace CSServerDemo.Models;
 
-[Table("user_account")]
+[Table("cs_user_account")]
 public class UserAccount
 {
     [Column("id")]

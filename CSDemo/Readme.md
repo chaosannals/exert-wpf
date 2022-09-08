@@ -15,7 +15,7 @@ Microsoft.EntityFrameworkCore.Design
 Mysql.EntityFrameworkCore
 
 ```powershell
-Scaffold-DbContext "server=127.0.0.1;port=3306;database=wpfcsdemo;uid=root;pwd=password;CharSet=utf8mb4;SslMode=none" MySql.EntityFrameworkCore -o Models -f
+Scaffold-DbContext "server=127.0.0.1;port=3306;database=wpfcsdemo;uid=root;pwd=password;CharSet=utf8mb4" MySql.EntityFrameworkCore -o Models -f
 ```
 
 ## Code First
@@ -27,7 +27,12 @@ Scaffold-DbContext "server=127.0.0.1;port=3306;database=wpfcsdemo;uid=root;pwd=p
 出现命令行后要在默认选择默认的项目。
 
 ```powershell
-Enable-Migrations 
+# 建立 Migration 记录
+Add-Migration MigrationName
 
-Add-Migration wpfcsdemo
+# 撤销 Migration 记录
+Remove-Migration
+
+# 应用 Migration 更新数据库
+Update-Database
 ```
