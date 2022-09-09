@@ -56,7 +56,9 @@ public partial class App : Application
          });
 
         // serviceCollection.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
+        serviceCollection.AddTransient(typeof(BallWindow));
         serviceCollection.AddTransient(typeof(MainWindow));
+        serviceCollection.AddTransient(typeof(MenuWindow));
         //ConfigureServices(serviceCollection);
 
         ServiceProvider = serviceCollection.BuildServiceProvider();
