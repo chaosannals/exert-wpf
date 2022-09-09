@@ -17,6 +17,8 @@ public partial class App : Application
     public IServiceProvider ServiceProvider { get; private set; } = null!;
     public IConfiguration Configuration { get; private set; } = null!;
 
+    public SystemTray Tray { get; private set; } = null!;
+
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
@@ -24,7 +26,15 @@ public partial class App : Application
              .SetBasePath(Directory.GetCurrentDirectory())
              .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
+        Tray = new SystemTray();
+        Tray.ClickLeftButton += (o, e) =>
+        {
+            Shutdown();
+        };
+
         Configuration = builder.Build();
+
+        ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddSingleton<ILogger>(op =>
@@ -52,7 +62,7 @@ public partial class App : Application
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
         var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
-        mainWindow.Show();
+        //mainWindow.Show();
     }
 
 }
