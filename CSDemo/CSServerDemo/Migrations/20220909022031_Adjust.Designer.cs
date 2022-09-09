@@ -3,14 +3,16 @@ using System;
 using CSServerDemo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSServerDemo.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220909022031_Adjust")]
+    partial class Adjust
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +33,7 @@ namespace CSServerDemo.Migrations
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime")
-                        .HasColumnName("create_at")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnName("create_at");
 
                     b.Property<long?>("CreateBy")
                         .HasColumnType("bigint")
@@ -59,9 +60,6 @@ namespace CSServerDemo.Migrations
                         .HasColumnName("update_by");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Account" }, "ACCOUNT_UNIQUE")
-                        .IsUnique();
 
                     b.ToTable("cs_user_account");
                 });

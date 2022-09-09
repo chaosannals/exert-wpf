@@ -1,24 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace CSServerDemo.Models;
 
 [Table("cs_user_account")]
+[Index(nameof(Account), Name = "ACCOUNT_UNIQUE", IsUnique = true)]
 public class UserAccount
 {
     [Column("id")]
     public long Id { get; set; }
 
-    [Column("account")]
+    [Column("account", TypeName ="VARCHAR(100)")]
     public string Account { get; set; } = null!;
 
-    [Column("nickname")]
+    [Column("nickname", TypeName ="VARCHAR(100)")]
     public string? Nickname { get; set; }
 
 
-    [Column("password")]
+    [Column("password", TypeName ="CHAR(64)")]
     public string? Password { get; set; }
 
     [Column("create_at")]
+    //[DefaultValue(typeof(DateTime), "CURRENT_TIMESTAMP")]
     public DateTime CreateAt { get; set; }
 
     [Column("create_by")]

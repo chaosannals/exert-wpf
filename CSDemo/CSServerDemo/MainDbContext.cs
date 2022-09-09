@@ -10,4 +10,12 @@ public class MainDbContext :DbContext
     public MainDbContext(DbContextOptions<MainDbContext> options): base(options) { }
 
     public DbSet<UserAccount> UserAccounts { get; set; } = null!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<UserAccount>()
+            .Property(x => x.CreateAt)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
+    }
 }
