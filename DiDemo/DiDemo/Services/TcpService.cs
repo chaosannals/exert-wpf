@@ -41,9 +41,11 @@ public class TcpService : BackgroundService
         logger.LogInformation("tcp server in {0} listen: {1}", Thread.CurrentThread.ManagedThreadId, EndPoint);
 
 
-        // 
+        // 到线程池去。
         await Task.Run(async () =>
         {
+            // 该方法因为 List 子项是先获取的 Task 导致会在 当前调度器 执行。
+            // 如果当前调度器是 UI 主线程的调度器，就会导致无法调度到其他线程。因为 UI 的调度器是单线程的。
             await Parallel.ForEachAsync(new List<Task>
                 {
                     AcceptAsync(socket, stoppingToken),
@@ -57,7 +59,7 @@ public class TcpService : BackgroundService
 
     public async Task AcceptAsync(Socket server, CancellationToken stoppingToken)
     {
-        logger.LogInformation("accept in: {0}", Thread.CurrentThread.ManagedThreadId);
+        logger.LogInformation("accept start in: {0}", Thread.CurrentThread.ManagedThreadId);
         while (!stoppingToken.IsCancellationRequested)
         {
             try
@@ -70,18 +72,17 @@ public class TcpService : BackgroundService
                 logger.LogError("accept error: {0}", e);
             }
         }
+        logger.LogInformation("accept end in: {0}", Thread.CurrentThread.ManagedThreadId);
     }
 
     public async Task DispatchAsync(CancellationToken stoppingToken)
     {
-        logger.LogInformation("dispatch in: {0}", Thread.CurrentThread.ManagedThreadId);
+        logger.LogInformation("dispatch start in: {0}", Thread.CurrentThread.ManagedThreadId);
         while (!stoppingToken.IsCancellationRequested)
         {
-            logger.LogTrace("dispatch in {0} clients count", Thread.CurrentThread.ManagedThreadId);
             try
             {
                 var sockets = clients.ToList();
-                logger.LogTrace("dispatch in {0} sockets count: {1}", Thread.CurrentThread.ManagedThreadId, sockets.Count);
                 if (sockets.Count > 0)
                 {
                     Socket.Select(sockets, null, null, 1000);
