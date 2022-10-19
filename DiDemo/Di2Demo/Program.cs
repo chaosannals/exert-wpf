@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading;
 using Di2Demo;
 using Di2Demo.Services;
+using System.Windows.Threading;
 
 if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA)
 {
@@ -13,7 +14,7 @@ if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA)
     Thread.CurrentThread.SetApartmentState(ApartmentState.STA);
 }
 
-var sc = new SynchronizationContext();
+var sc = new DispatcherSynchronizationContext();
 SynchronizationContext.SetSynchronizationContext(sc);
 
 var host = Host.CreateDefaultBuilder(args)

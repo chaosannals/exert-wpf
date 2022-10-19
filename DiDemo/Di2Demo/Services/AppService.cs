@@ -36,19 +36,37 @@ public class AppService : BackgroundService //IHostedService, IDisposable
 
     public async Task RunAsync(CancellationToken stoppingToken)
     {
-        var sc = SynchronizationContext.Current;
-        logger.LogInformation("run in {0}", Thread.CurrentThread.ManagedThreadId);
-        //await Task.Delay(1000);
-        await Task.Run(() =>
+        var ts = TaskScheduler.FromCurrentSynchronizationContext();
+        await Task.Run(async () =>
         {
-            //SynchronizationContext.SetSynchronizationContext(sc);
-            //var ts = TaskScheduler.FromCurrentSynchronizationContext();
-            sc?.Send(a =>
+            logger.LogInformation("app 0 run in {0}", Thread.CurrentThread.ManagedThreadId);
+            await Task.Factory.StartNew(() =>
             {
                 logger.LogInformation("app run in {0}", Thread.CurrentThread.ManagedThreadId);
                 app.Run(window);
-            }, app);
+            }, stoppingToken, TaskCreationOptions.HideScheduler, ts)
+            .ConfigureAwait(false);
         }, stoppingToken);
+        //var sc = SynchronizationContext.Current;
+        //var ts = TaskScheduler.FromCurrentSynchronizationContext();
+        //logger.LogInformation("run in {0} {1}", Thread.CurrentThread.ManagedThreadId, ts);
+        ////await Task.Delay(1000);
+        //await Task.Factory.StartNew(() =>
+        //{
+        //    logger.LogInformation("app run in {0}", Thread.CurrentThread.ManagedThreadId);
+        //    app.Run(window);
+        //}, stoppingToken, TaskCreationOptions.None, ts);
+
+        //await Task.Run(() =>
+        //{
+            //SynchronizationContext.SetSynchronizationContext(sc);
+            //var ts = TaskScheduler.FromCurrentSynchronizationContext();
+            //sc?.Send(a =>
+            //{
+            //    logger.LogInformation("app run in {0}", Thread.CurrentThread.ManagedThreadId);
+            //    app.Run(window);
+            //}, app);
+        //}, stoppingToken);
     }
 
     //public void Dispose()

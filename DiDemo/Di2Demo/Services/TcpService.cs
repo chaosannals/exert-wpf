@@ -30,18 +30,17 @@ public class TcpService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        socket.NoDelay = true;
-        socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-        socket.Bind(EndPoint);
-        socket.Listen(0);
-
-        logger.LogInformation("tcp server in {0} listen: {1}", Thread.CurrentThread.ManagedThreadId, EndPoint);
-
-
         // 到线程池去。
         await Task.Run(async () =>
         {
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.NoDelay = true;
+            socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            socket.Bind(EndPoint);
+            socket.Listen(0);
+
+            logger.LogInformation("tcp server in {0} listen: {1}", Thread.CurrentThread.ManagedThreadId, EndPoint);
+
             // 该方法因为 List 子项是先获取的 Task 导致会在 当前调度器 执行。
             // 如果当前调度器是 UI 主线程的调度器，就会导致无法调度到其他线程。因为 UI 的调度器是单线程的。
             await Parallel.ForEachAsync(new List<Task>
