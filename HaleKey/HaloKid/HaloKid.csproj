@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <StartupObject>HaloKid.App</StartupObject>
+    <Authors>陈慎超</Authors>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>Targets\Binaries\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>Targets\Binaries\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Logo.ico" />
+    <None Remove="Resources\Icon\Account.svg" />
+    <None Remove="Resources\Icon\Broadcast.svg" />
+    <None Remove="Resources\Icon\Function.svg" />
+    <None Remove="Resources\Icon\Student-Female.svg" />
+    <None Remove="Resources\Icon\Student-Male.svg" />
+    <None Remove="Resources\Icon\Student.svg" />
+    <None Remove="Resources\Icon\System-Control.svg" />
+    <None Remove="Resources\Icon\Teacher-Female.svg" />
+    <None Remove="Resources\Icon\Teacher-Male.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.SVGImage" Version="4.1.94" />
+    <PackageReference Include="HandyControl" Version="3.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NAudio" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Widgets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Logo.ico" />
+    <Resource Include="Resources\Icon\Account.svg" />
+    <Resource Include="Resources\Icon\Broadcast.svg" />
+    <Resource Include="Resources\Icon\Function.svg" />
+    <Resource Include="Resources\Icon\Student-Female.svg" />
+    <Resource Include="Resources\Icon\Student-Male.svg" />
+    <Resource Include="Resources\Icon\System-Control.svg" />
+    <Resource Include="Resources\Icon\Teacher-Female.svg" />
+    <Resource Include="Resources\Icon\Teacher-Male.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Targets\**" />
+    <EmbeddedResource Remove="Targets\**" />
+    <None Remove="Targets\**" />
+    <Page Remove="Targets\**" />
+  </ItemGroup>
+</Project>

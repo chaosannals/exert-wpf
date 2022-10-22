@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaloKid", "HaloKid\HaloKid.csproj", "{A5596E50-5BD2-4547-AE69-98A9D600ED6B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HaloKid.Setup", "HaloKid.Setup\HaloKid.Setup.vdproj", "{5B132CEE-F031-4154-BEA6-8FD155218A86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaloKid.Updater", "HaloKid.Updater\HaloKid.Updater.csproj", "{8DCF9F19-E1A6-40D5-9EB3-DD955DAE5669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloKid.Storage", "HaloKid.Storage\HaloKid.Storage.csproj", "{1B55C029-8C87-4808-BA4A-FED284466204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloKid.Utility", "HaloKid.Utility\HaloKid.Utility.csproj", "{0BCD730C-0428-44AB-B94A-2A17E741FCBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaloKid.Panel", "HaloKid.Panel\HaloKid.Panel.csproj", "{EC3AD25B-C02D-4A4F-A06E-2757032BC471}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5596E50-5BD2-4547-AE69-98A9D600ED6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5596E50-5BD2-4547-AE69-98A9D600ED6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5596E50-5BD2-4547-AE69-98A9D600ED6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5596E50-5BD2-4547-AE69-98A9D600ED6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B132CEE-F031-4154-BEA6-8FD155218A86}.Debug|Any CPU.ActiveCfg = Debug
+		{5B132CEE-F031-4154-BEA6-8FD155218A86}.Release|Any CPU.ActiveCfg = Release
+		{8DCF9F19-E1A6-40D5-9EB3-DD955DAE5669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCF9F19-E1A6-40D5-9EB3-DD955DAE5669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCF9F19-E1A6-40D5-9EB3-DD955DAE5669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCF9F19-E1A6-40D5-9EB3-DD955DAE5669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B55C029-8C87-4808-BA4A-FED284466204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B55C029-8C87-4808-BA4A-FED284466204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B55C029-8C87-4808-BA4A-FED284466204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B55C029-8C87-4808-BA4A-FED284466204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BCD730C-0428-44AB-B94A-2A17E741FCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCD730C-0428-44AB-B94A-2A17E741FCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCD730C-0428-44AB-B94A-2A17E741FCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCD730C-0428-44AB-B94A-2A17E741FCBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC3AD25B-C02D-4A4F-A06E-2757032BC471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC3AD25B-C02D-4A4F-A06E-2757032BC471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC3AD25B-C02D-4A4F-A06E-2757032BC471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC3AD25B-C02D-4A4F-A06E-2757032BC471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37CA435E-52F0-43F2-9FC3-369478252903}
+	EndGlobalSection
+EndGlobal
