@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   t="1622553509838"
+   class="icon"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   p-id="3261"
+   width="200"
+   height="200"
+   id="svg32"
+   sodipodi:docname="Student.svg"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   inkscape:export-filename="F:\HaloKid\HaloKid\Resources\Icon\Student.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <metadata
+     id="metadata36">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     id="namedview34"
+     showgrid="false"
+     inkscape:zoom="4.15"
+     inkscape:cx="100"
+     inkscape:cy="100"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg32" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2" />
+  </defs>
+  <path
+     d="M513.4 952.6l275.3-2.3s-13.8-220.8-202.5-255.2c-51.4-4.3-74-2.6-74-2.6v0.3c0.1 161 1.2 259.8 1.2 259.8z"
+     fill="#FFFFFF"
+     p-id="3262"
+     id="path6" />
+  <path
+     d="M510 952.6l-274.2-2.3s13.7-221 201.7-255.4c51.2-4.3 73.6-2.6 73.6-2.6v0.3c0 161.2-1.1 260-1.1 260z"
+     fill="#E1E6F7"
+     p-id="3263"
+     id="path8" />
+  <path
+     d="M408 599.1h192.6v149.4s-47.5 74.9-95.7 74.9c-48.1 0-96.9-74.9-96.9-74.9V599.1z"
+     fill="#FFDDB8"
+     p-id="3264"
+     id="path10" />
+  <path
+     d="M408 731.5V582.1h192.6v81.5"
+     fill="#E5C6A5"
+     p-id="3265"
+     id="path12" />
+  <path
+     d="M410 646.7c17.2 29 4.2 71.5 20.6 96.1 16.5 24.6 49.3 42.3 77.2 68.2-36.7 17.1-97.7 5.7-124.7-39.7-27-45.4-9.8-107.6 26.9-124.6z"
+     fill="#C74A4A"
+     p-id="3266"
+     id="path14" />
+  <path
+     d="M482.8 780.3h54.4c12.5 0 22.7 10.1 22.7 22.7l-6.8 24.9c0 12.5-16 22.7-24.5 22.7h-37.1c-8.5 0-24.5-10.1-24.5-22.7l-6.8-24.9c-0.1-12.5 10.1-22.7 22.6-22.7z"
+     fill="#E25656"
+     p-id="3267"
+     id="path16" />
+  <path
+     d="M505.8 823.4c-16.5 3.1-26.9 25.1-32.1 45.3-6.6 25.8-10.3 56.3-13.2 82.6 33.4 0 42.6 0 77.1 0.4 12.1-28.7 14.9-64.6-0.5-98.9-7.6-17.1-17.6-32-31.3-29.4zM603.3 646.7c-17.2 28.9-4.2 71.4-20.7 96-16.5 24.5-49.4 42.2-77.3 68.1 36.8 17 109.1-5.5 136.2-50.8 27-45.4-1.5-96.3-38.2-113.3z"
+     fill="#E25656"
+     p-id="3268"
+     id="path18" />
+  <path
+     d="M511.9 170.7c-131.1 0-226.3 107.9-226.3 241 0 44.7 11.4 122.4 31.2 158.2 39.1 70.8 164.9 88.9 195.4 90.2 0.1-127.9-0.3-323.3-0.3-489.4z"
+     fill="#F5D4B1"
+     p-id="3269"
+     id="path20" />
+  <path
+     d="M512.5 170.7c131.1 0 226.4 107.9 226.4 241 0 44.7-11.4 122.4-31.2 158.2-39.2 70.8-165 88.9-195.5 90.2 0-128 0.3-323.3 0.3-489.4z"
+     fill="#FFDDB8"
+     p-id="3270"
+     id="path22" />
+  <path
+     d="m 518.8,120.9 c 0,0 -146.2,-2.9 -222.1,88.4 -70.5,84.7 -30.3,238.7 -15.4,253.8 -1.1,-6.8 37,9.2 33.8,-2.3 -15.9,-56.75 -1.92553,-86.75779 34.8732,-121.25557 18.44922,-17.29564 119.0027,65.02063 160.6027,55.12063 C 625.1759,367.36506 667.1,325.6 681.1,338.4 c 34.5,38.5 32,138.2 32,138.2 0,0 65.5,-53.6 59.4,-151.8 C 768.3,257.4 721.8,189.6 688,168.4 654.1,147.2 629.7,136.9 601.2,132.1 583.9797,120.7932 552.03288,119.16178 518.8,120.9 Z"
+     fill="#333333"
+     p-id="3271"
+     id="path24"
+     sodipodi:nodetypes="ccccsccccccc" />
+  <path
+     d="M762.3 405.3c15.3 5.2 19.7 33.2 9.9 62.5-9.9 29.4-30.3 49-45.6 43.8-15.3-5.2-19.7-33.2-9.9-62.5s30.2-48.9 45.6-43.8z"
+     fill="#FFDDB8"
+     p-id="3272"
+     id="path26" />
+  <path
+     d="M265.7 408.6c-15.3 5.2-19.7 33.6-9.9 63.4 9.9 29.8 30.3 49.6 45.6 44.4 15.3-5.2 19.7-33.6 9.9-63.4-9.9-29.7-30.3-49.6-45.6-44.4z"
+     fill="#F5D4B1"
+     p-id="3273"
+     id="path28" />
+  <path
+     d="M496.2 823.7c-13.5 3.2-22 25.1-26.2 45.4-5.3 25.7-8.3 55.9-10.7 82.2 19.7 0.1 23.5 0.1 38.2-0.2 22.8-31.3 39.6-64.4 37.4-100.4-1.1-18.4-27.5-29.6-38.7-27z"
+     fill="#C74A4A"
+     p-id="3274"
+     id="path30" />
+</svg>

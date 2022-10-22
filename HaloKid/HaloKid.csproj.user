@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Modules\AccountPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Modules\IndexPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Modules\AccountPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Modules\IndexPanel.xaml">

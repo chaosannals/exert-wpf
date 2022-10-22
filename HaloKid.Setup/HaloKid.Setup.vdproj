@@ -183,7 +183,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HaloKid"
         "ProductCode" = "8:{EBBC690C-FDD8-4A2D-BEF1-34545B421B0F}"
-        "PackageCode" = "8:{0FAEA010-E49B-45AC-A4A3-3A589A494A79}"
+        "PackageCode" = "8:{375AF7C4-4D48-4A18-80F9-D02F2E61FD94}"
         "UpgradeCode" = "8:{4AA28E21-D3DC-4A56-B11B-6DA88BC1430D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

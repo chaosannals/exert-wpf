@@ -3,8 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:HaloKid"
         mc:Ignorable="d"
         Title="Halo Kid" Height="450" Width="800">
-    <Frame x:Name="ContentPage" NavigationUIVisibility="Hidden" Source="Pages/LoginPage.xaml"/>
+    <Grid>
+        <Frame x:Name="ContentPage" NavigationUIVisibility="Hidden" Source="Pages/LoginPage.xaml"/>
+        <hc:NotifyIcon Text="HandyControl" IsBlink="true" Visibility="Visible" Icon="/HaloKid;component/Logo.ico"/>
+    </Grid>
 </Window>

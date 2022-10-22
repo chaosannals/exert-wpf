@@ -12,9 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace HaloKid.Modules
 {
+    class StudentPageModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string avatar = null;
+
+        public string Avatar
+        {
+            get { return avatar; }
+            set
+            {
+                avatar = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Avatar"));
+            }
+        }
+    }
+
     /// <summary>
     /// StudentPanel.xaml 的交互逻辑
     /// </summary>

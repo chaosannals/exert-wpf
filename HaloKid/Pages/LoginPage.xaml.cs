@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using HaloKid.Models;
 
 namespace HaloKid.Pages
 {
@@ -23,8 +24,8 @@ namespace HaloKid.Pages
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string username;
-        private string password;
+        private string username = string.Empty;
+        private string password = string.Empty;
 
         public string Username
         {
@@ -62,6 +63,21 @@ namespace HaloKid.Pages
 
         private void onClickSubmit(object sender, RoutedEventArgs e)
         {
+            using (HkDbc dbc = new HkDbc())
+            {
+                AccountModel ac = (from a in dbc.Set<AccountModel>()
+                                   where a.Account == Model.Username
+                                   select a).FirstOrDefault();
+                if (ac == null)
+                {
+                    return;
+                }
+                string pass = PassBox.Password.ToSha256();
+                if (ac.Password != pass)
+                {
+                    return;
+                }
+            }
             MainWindow window = Window.GetWindow(this) as MainWindow;
             window.SwitchPage("Index");
         }

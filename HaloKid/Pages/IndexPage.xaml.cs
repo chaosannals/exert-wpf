@@ -31,14 +31,10 @@ namespace HaloKid.Pages
             ContentPanel.Navigate(new Uri(path));
         }
 
-        private void onClickTeacherItem(object sender, MouseButtonEventArgs e)
+        private void onClickSideMenuItem(object sender, MouseButtonEventArgs e)
         {
-            SwitchPanel("Teacher");
-        }
-
-        private void onClickStudentItem(object sender, MouseButtonEventArgs e)
-        {
-            SwitchPanel("Student");
+            string panel = HkV.GetTargetPanel(sender as DependencyObject);
+            SwitchPanel(panel);
         }
     }
 }
