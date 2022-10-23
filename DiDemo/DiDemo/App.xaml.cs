@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace DiDemo
@@ -39,6 +40,7 @@ namespace DiDemo
                 })
                 .Build();
             logger = AppHost.Services.GetRequiredService<ILogger<App>>();
+            logger.LogInformation("scheduler: {0}", TaskScheduler.Current);
             MainWindow = AppHost.Services.GetRequiredService<MainWindow>();
         }
 

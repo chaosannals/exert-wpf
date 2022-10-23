@@ -30,8 +30,10 @@ public class TcpService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        // 到线程池去。
-        await Task.Run(async () =>
+        // 因为 host.StartAsync 先于 app.Run 被调用。 DiDemo host.StartAsync 是后于 app.Run 调用的。
+        // 独立的线程 TaskCreationOptions.LongRunning ，不然会导致 host 退出时无法调度。
+        // 所以之后注册的 Service 最好都是 TaskCreationOptions.LongRunning 的。
+        await Task.Factory.StartNew(async () =>
         {
             var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.NoDelay = true;
@@ -41,17 +43,26 @@ public class TcpService : BackgroundService
 
             logger.LogInformation("tcp server in {0} listen: {1}", Thread.CurrentThread.ManagedThreadId, EndPoint);
 
-            // 该方法因为 List 子项是先获取的 Task 导致会在 当前调度器 执行。
-            // 如果当前调度器是 UI 主线程的调度器，就会导致无法调度到其他线程。因为 UI 的调度器是单线程的。
-            await Parallel.ForEachAsync(new List<Task>
+            try
+            {
+                // 该方法因为 List 子项是先获取的 Task 导致会在 当前调度器 执行。
+                // 如果当前调度器是 UI 主线程的调度器，就会导致无法调度到其他线程。因为 UI 的调度器是单线程的。
+                await Parallel.ForEachAsync(new List<Task>
                 {
                     AcceptAsync(socket, stoppingToken),
                     DispatchAsync(stoppingToken),
                 },
-                stoppingToken,
-                async (t, c) => await t
-            );
-        });
+                    stoppingToken,
+                    async (t, c) => await t
+                );
+            }
+            finally
+            {
+                socket.Close();
+                logger.LogInformation("tcp server end: {0}", Thread.CurrentThread.ManagedThreadId);
+            }
+        }, stoppingToken, TaskCreationOptions.LongRunning, TaskScheduler.Current);
+        logger.LogInformation("tcp execute end: {0}", Thread.CurrentThread.ManagedThreadId);
     }
 
     public async Task AcceptAsync(Socket server, CancellationToken stoppingToken)
@@ -63,6 +74,10 @@ public class TcpService : BackgroundService
             {
                 var socket = await server.AcceptAsync(stoppingToken);
                 clients.Add(socket);
+            }
+            catch (OperationCanceledException e)
+            {
+                logger.LogWarning("accept canceled {0}", e.Message);
             }
             catch (Exception e)
             {
@@ -89,6 +104,10 @@ public class TcpService : BackgroundService
                 {
                     await Task.Yield();
                 }
+            }
+            catch (OperationCanceledException e)
+            {
+                logger.LogWarning("dispatch canceled {0}", e.Message);
             }
             catch (Exception e)
             {
