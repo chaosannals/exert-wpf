@@ -35,6 +35,7 @@ namespace DiDemo
                 })
                 .ConfigureServices((hc, services) =>
                 {
+                    services.AddSingleton(_ => this);
                     services.AddSingleton<MainWindow>();
                     services.AddHostedService<TcpService>();
                 })
