@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="TextButton" TargetType="{x:Type Button}">
+        <StackPanel>
+            <TextBlock>内容按钮</TextBlock>
+            <TextBlock Text="{TemplateBinding Property=Content}"/>
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ContentButton" TargetType="{x:Type Button}">
+        <Grid>
+            <StackPanel>
+
+                <!-- Name 只在模板中有效，并不会在应用了该模板的组件上为 TextBlock 创建变量 Title 来引用 -->
+                <TextBlock x:Name="Title">内容按钮</TextBlock>
+
+                <!-- TemplateBinding 把 Rectangle 的 Width 和 Height 绑定到应用了该模板的 Button 的 Width 和 Height 上 -->
+                <!-- 当 Button 没有设置 Width 和 Height 时是无效的。因为 Width 和 Height 需要组件预设值（即，Button 显式写了这个值），当应用了布局后不一定就是这个值，而且一般组件被布局器布局时，也没有设置这个值。 -->
+                <Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="1" Color="DarkBlue"/>
+                            <GradientStop Offset="0.5" Color="Cyan"/>
+                            <GradientStop Offset="0" Color="White"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </StackPanel>
+            <!-- Content 占位符 -->
+            <ContentPresenter Margin="{TemplateBinding Padding}"/>
+        </Grid>
+    </ControlTemplate>
+</ResourceDictionary>

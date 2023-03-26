@@ -3,7 +3,21 @@
     <Style x:Key="RedButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Red"/>
     </Style>
+    
     <Style x:Key="GreenButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Green"/>
+    </Style>
+
+    <!-- 设置模板的样式 -->
+    <Style x:Key="TemplateButton" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <ContentPresenter/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

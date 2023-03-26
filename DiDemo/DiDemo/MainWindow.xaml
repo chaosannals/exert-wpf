@@ -7,5 +7,7 @@
         mc:Ignorable="d"
         Title="DiDemo"
         Height="450" Width="800">
-    <Frame Source="Views/MusicPage.xaml" />
+    <!--<Frame Source="Views/ButtonStylePage.xaml" />-->
+    <!--<Frame Source="Views/ButtonTemplatePage.xaml" />-->
+    <Frame Source="Views/DataPage.xaml" />
 </Window>

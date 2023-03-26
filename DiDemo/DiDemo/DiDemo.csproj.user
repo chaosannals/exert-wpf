@@ -10,6 +10,12 @@
     <Compile Update="Views\ButtonStylePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ButtonTemplatePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DataPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\MusicPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,7 +27,16 @@
     <Page Update="Styles\ButtonStyleDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Templates\ButtonTemplatesDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ButtonStylePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ButtonTemplatePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DataPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MusicPage.xaml">

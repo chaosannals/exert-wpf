@@ -1,0 +1,39 @@
+﻿<Page x:Class="DiDemo.Views.ButtonTemplatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+      xmlns:local="clr-namespace:DiDemo.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ButtonTemplatePage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Templates/ButtonTemplatesDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Button Template="{StaticResource TextButton}">文本按钮模板</Button>
+
+        <Button Template="{StaticResource ContentButton}" Grid.Column="1" Width="200" Height="200" Padding="50">
+            <Rectangle Width="100" Height="100" Fill="#ff0000"/>
+        </Button>
+
+        <ScrollViewer  Grid.Row="1">
+            <TextBox x:Name="TextPanel">模板内容</TextBox>
+        </ScrollViewer>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+    </Grid>
+</Page>
