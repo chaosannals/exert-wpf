@@ -10,5 +10,6 @@
     <!--<Frame Source="Views/ButtonStylePage.xaml" />-->
     <!--<Frame Source="Views/ButtonTemplatePage.xaml" />-->
     <!--<Frame Source="Views/DataPage.xaml" />-->
-    <Frame Source="Views/ValueConvertPage.xaml" />
+    <!--<Frame Source="Views/ValueConvertPage.xaml" />-->
+    <Frame Source="Views/HierarchicalDataTemplatePage.xaml" />
 </Window>

@@ -1,0 +1,75 @@
+﻿<Page x:Class="DiDemo.Views.HierarchicalDataTemplatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiDemo.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HierarchicalDataTemplatePage">
+    <Page.Resources>
+        <XmlDataProvider x:Key="hd" XPath="Lv1">
+            <x:XData>
+                <Lv1 xmlns="">
+                    <Lv2 Name="Lv2 - 1">
+                        <Lv3 Name="Lv3 - 1"></Lv3>
+                        <Lv3 Name="Lv3 - 2"></Lv3>
+                        <Lv3 Name="Lv3 - 3"></Lv3>
+                        <Lv3 Name="Lv3 - 4"></Lv3>
+                    </Lv2>
+                    <Lv2 Name="Lv2 - 2">
+                        <Lv3 Name="Lv3 - 1">
+                            <Lv4 Name="Lv4 -  1"></Lv4>
+                        </Lv3>
+                        <Lv3 Name="Lv3 - 2">
+                            <Lv4 Name="Lv4 -  1">
+                                <Lv5 Text="Lv5 -1">
+                                    <Lv6 Text="Lv6 - 1"/>
+                                </Lv5>
+                                <Lv5 Text="Lv5 -2"></Lv5>
+                                <Lv5 Text="Lv5 -3"></Lv5>
+                                <NLv5 NText="NLV5"></NLv5>
+                            </Lv4>
+                        </Lv3>
+                        <Lv3 Name="Lv3 - 3"></Lv3>
+                        <Lv3 Name="Lv3 - 4"></Lv3>
+                    </Lv2>
+                </Lv1>
+            </x:XData>
+        </XmlDataProvider>
+        <HierarchicalDataTemplate DataType="Lv2" ItemsSource="{Binding XPath=Lv3}">
+            <StackPanel Background="Red">
+                <TextBlock FontSize="34" Text="{Binding XPath=@Name}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="Lv3" ItemsSource="{Binding XPath=Lv4}">
+            <StackPanel Background="Cyan">
+                <TextBlock FontSize="24" Text="{Binding XPath=@Name}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="Lv4"  ItemsSource="{Binding XPath=Lv5|NLv5}">
+            <StackPanel Background="Yellow">
+                <TextBlock FontSize="14" Text="{Binding XPath=@Name}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="NLv5">
+            <StackPanel Background="Pink">
+                <TextBlock FontSize="14" Text="{Binding XPath=@NText}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="Lv5"  ItemsSource="{Binding XPath=Lv6}">
+            <StackPanel Background="Blue">
+                <TextBlock FontSize="14" Text="{Binding XPath=@Text}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="Lv6">
+            <StackPanel Background="Green">
+                <TextBlock FontSize="14" Text="{Binding XPath=@Text}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </Page.Resources>
+    <StackPanel>
+        <TextBlock>层级数据模板</TextBlock>
+        <TreeView MinHeight="400" ItemsSource="{Binding Source={StaticResource hd}, XPath=Lv2}"/>
+    </StackPanel>
+</Page>

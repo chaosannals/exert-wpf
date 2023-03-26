@@ -18,12 +18,11 @@
     </Page.Resources>
     <StackPanel>
         <!-- ItemTemplate 用于子项样式模板 -->
-        <!-- ItemPanel 用于布局子项 -->
+        <!-- ItemPanel 用于布局子项提供一个 Panel 对象（不能有子内容）-->
         <ListBox ItemsSource="{Binding Source={StaticResource cl}}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button>按钮</Button>
                     </StackPanel>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>

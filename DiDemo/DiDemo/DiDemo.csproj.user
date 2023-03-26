@@ -16,6 +16,9 @@
     <Compile Update="Views\DataPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\HierarchicalDataTemplatePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\MusicPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DataPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HierarchicalDataTemplatePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MusicPage.xaml">
