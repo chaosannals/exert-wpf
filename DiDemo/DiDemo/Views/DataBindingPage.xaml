@@ -1,0 +1,62 @@
+﻿<Page x:Class="DiDemo.Views.DataBindingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DiDemo.Views"
+      xmlns:data="clr-namespace:DiDemo.Data"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DataBindingPage">
+    <Page.Resources>
+        <data:AddressList x:Key="addressList">
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道1"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道2"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道3"/>
+            <data:AddressInfo Country="中国" City="广州" StreetName="街道三"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道4"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道5"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道6"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道7"/>
+            <data:AddressInfo Country="中国" City="广州" StreetName="街道七"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道8"/>
+            <data:AddressInfo Country="中国" City="汕头" StreetName="街道9"/>
+            <data:AddressInfo Country="中国" City="广州" StreetName="街道九"/>
+        </data:AddressList>
+    </Page.Resources>
+    <Grid DataContext="{StaticResource addressList}">
+        <ScrollViewer Height="240" CanContentScroll="True">
+            <ListBox ItemsSource="{Binding}" DisplayMemberPath="StreetName" IsSynchronizedWithCurrentItem="True">
+
+            </ListBox>
+        </ScrollViewer>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Click="OnPrev">上一个</Button>
+            <Button Click="OnNext">下一个</Button>
+            <Button Click="OnAdd">添加</Button>
+            <Button Click="OnDel">删除</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Label>国家：</Label>
+                <TextBox Text="{Binding Path=Country}" Width="400"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>城市：</Label>
+                <TextBox Text="{Binding Path=City}" Width="400"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>街道：</Label>
+                <TextBox Text="{Binding Path=StreetName}" Width="400"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+</Page>

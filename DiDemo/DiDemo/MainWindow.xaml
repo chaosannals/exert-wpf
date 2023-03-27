@@ -11,5 +11,7 @@
     <!--<Frame Source="Views/ButtonTemplatePage.xaml" />-->
     <!--<Frame Source="Views/DataPage.xaml" />-->
     <!--<Frame Source="Views/ValueConvertPage.xaml" />-->
-    <Frame Source="Views/HierarchicalDataTemplatePage.xaml" />
+    <!--<Frame Source="Views/HierarchicalDataTemplatePage.xaml" />-->
+    <!--<Frame Source="Views/DataBindingBookPage.xaml" />-->
+    <Frame Source="Views/DataBindingPage.xaml" />
 </Window>

@@ -13,6 +13,12 @@
     <Compile Update="Views\ButtonTemplatePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DataBindingBookPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DataBindingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DataPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +46,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ButtonTemplatePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DataBindingBookPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DataBindingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DataPage.xaml">
