@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:DiDemo.Views"
       xmlns:data="clr-namespace:DiDemo.Data"
       xmlns:t="clr-namespace:DiDemo.Templates"
@@ -10,6 +11,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DataPage">
     <Page.Resources>
+        <ObjectDataProvider x:Key="state" ObjectType="{x:Type data:StateInfo}">
+            <ObjectDataProvider.ConstructorParameters>
+                <sys:Int32>1</sys:Int32>
+                <sys:String>StateName</sys:String>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="states" ObjectType="{x:Type data:StateHelper}" MethodName="GetStates"/>
         <ObjectDataProvider x:Key="addressList" ObjectType="{x:Type data:AddressList}"/>
         <DataTemplate x:Key="dt1">
             <Border x:Name="border" BorderThickness="4">
@@ -54,6 +62,26 @@
     </Page.Resources>
     <ScrollViewer>
         <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>State ID:</Label>
+                <TextBlock Text="{Binding Source={StaticResource state}, Path=Id}"/>
+                <Label>State Name:</Label>
+                <TextBlock Text="{Binding Source={StaticResource state}, Path=Name}"/>
+            </StackPanel>
+
+            <ComboBox ItemsSource="{Binding Source={StaticResource states}}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>State Id:</Label>
+                            <TextBlock Text="{Binding Path=Id}"/>
+                            <Label>State Name:</Label>
+                            <TextBlock Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
             <!-- ItemTemplate 用于子项样式模板 -->
             <!-- ItemPanel 用于布局子项提供一个 Panel 对象（不能有子内容）-->
             <ListBox ItemsSource="{Binding Source={StaticResource addressList}}" ItemTemplate="{Binding Source={StaticResource dt1}}">
