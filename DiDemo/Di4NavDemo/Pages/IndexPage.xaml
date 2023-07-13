@@ -1,0 +1,15 @@
+﻿<Page x:Class="Di4NavDemo.Pages.IndexPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Di4NavDemo.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IndexPage">
+
+    <Grid>
+        <TextBlock>Index</TextBlock>
+        <Button Click="onClickToAbout">to About</Button>
+    </Grid>
+</Page>
