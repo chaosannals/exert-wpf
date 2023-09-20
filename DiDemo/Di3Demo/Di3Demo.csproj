@@ -15,4 +15,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="../Readme.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
 </Project>
