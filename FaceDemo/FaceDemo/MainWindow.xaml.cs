@@ -50,9 +50,10 @@ namespace FaceDemo
             return bi;
         } 
 
-        private void OnClickPickPhotoButton(object sender, RoutedEventArgs e)
+        private async void OnClickPickPhotoButton(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
+            dialog.Filter = "图片|*.bmp;*.jpg;*.jpeg;*.webp;*.gif;*.png|全部|*.*";
             dialog.Title = "打开照片";
             if (dialog.ShowDialog() == true)
             {
@@ -63,7 +64,7 @@ namespace FaceDemo
                 using var faceDetector = new FaceDetector();
                 if (bitmap != null && faceDetector != null)
                 {
-                    var infos = faceDetector.Detect(bitmap);
+                    var infos = await faceDetector.DetectAsync(bitmap);
                     Debug.WriteLine($"识别到的人脸数量：{infos.Length} 个人脸信息：\n");
                     Debug.WriteLine($"No.\t人脸置信度\t位置信息");
 
@@ -71,12 +72,14 @@ namespace FaceDemo
 
                     Debug.WriteLine($"width: {bitmap.Width} height: {bitmap.Height}");
 
+                    var dpx = (float)(bitmap.Width / RawImage.Width + bitmap.Height / RawImage.Height);
+
                     using var result = new SKBitmap(bitmap.Width, bitmap.Height);
                     using var canvas = new SKCanvas(result);
                     using var paint = new SKPaint();
                     paint.Color = new SKColor(0, 255, 0);
-                    paint.TextSize = 100;
-                    paint.StrokeWidth = 24; // 图片太大， 这个太小 显示的时候 像素会被缩放没了。
+                    paint.TextSize = dpx * 12;
+                    paint.StrokeWidth = dpx; // 图片太大， 这个太小 显示的时候 像素会被缩放没了。
                     paint.Style = SKPaintStyle.Stroke;
                     paint.StrokeCap = SKStrokeCap.Round;
 
@@ -95,9 +98,9 @@ namespace FaceDemo
                         Debug.WriteLine($"left: {left} top: {top} right: {right} bottom: {bottom}");
 
                         canvas.DrawRect(left, top, info.Location.Width, info.Location.Height, paint);
-                        canvas.DrawText($"{info.Score:f4}", left, bottom + 100, paint);
+                        canvas.DrawText($"{info.Score:f4}", left, bottom + dpx * 12, paint);
                     }
-                    var rb = result.ToBitmap();
+                    using var rb = result.ToBitmap();
                     RawImage.Source = ToBitmapImage(rb);
                 }
                 else
