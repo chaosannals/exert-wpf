@@ -61,11 +61,15 @@ namespace FaceDemo
                 
                 using var bitmap = SKBitmap.Decode(dialog.FileName);
                 
-                using var faceDetector = new FaceDetector();
+                using var faceDetector = new FaceDetector(); // 框选定位人脸
+                using var faceMark = new FaceLandmarker(); // 五官定位
+                using var faceAntiSpoofing = new FaceAntiSpoofing(); // 防伪
+                using var faceRecognizer = new FaceRecognizer(); // 特征提取比对
                 if (bitmap != null && faceDetector != null)
                 {
                     var infos = await faceDetector.DetectAsync(bitmap);
-                    Debug.WriteLine($"识别到的人脸数量：{infos.Length} 个人脸信息：\n");
+                    var faceImage = bitmap.ToFaceImage();
+                    Debug.WriteLine($"识别到的人脸数量：{infos.Length} 个人脸信息：");
                     Debug.WriteLine($"No.\t人脸置信度\t位置信息");
 
                     CountLabel.Content = $"识别个数：{infos.Length}";
@@ -95,10 +99,29 @@ namespace FaceDemo
                         var right = info.Location.X + info.Location.Width;
                         var bottom = info.Location.Y + info.Location.Height;
 
+                        // 人脸定位
                         Debug.WriteLine($"left: {left} top: {top} right: {right} bottom: {bottom}");
 
                         canvas.DrawRect(left, top, info.Location.Width, info.Location.Height, paint);
                         canvas.DrawText($"{info.Score:f4}", left, bottom + dpx * 12, paint);
+
+                        // 活体检查
+                        var sw = Stopwatch.StartNew();
+                        sw.Start();
+                        var markPoints = faceMark.Mark(bitmap, info);
+
+                        foreach (var markPoint in markPoints)
+                        {
+                            canvas.DrawCircle((float)markPoint.X,(float)markPoint.Y, dpx * 2, paint);
+                        }
+
+                        var antiResult = faceAntiSpoofing.AntiSpoofing(bitmap, info, markPoints);
+                        sw.Stop();
+                        Debug.WriteLine($"活体检测，结果：{antiResult.Status}，清晰度:{antiResult.Clarity}，真实度：{antiResult.Reality}，耗时：{sw.ElapsedMilliseconds}ms");
+
+                        // 提取特征
+                        var token = faceRecognizer.Extract(faceImage, markPoints);
+                        Debug.WriteLine($"提取特征：长度 {token.Length}");
                     }
                     using var rb = result.ToBitmap();
                     RawImage.Source = ToBitmapImage(rb);
