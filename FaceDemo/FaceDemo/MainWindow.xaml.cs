@@ -196,8 +196,12 @@ public partial class MainWindow : Window
     {
         while (true)
         {
-            await Task.Delay(1000);
+            await Task.Delay(100);
+            var sw = new Stopwatch();
+            sw.Start();
             await CaptureVideo();
+            sw.Stop();
+            Debug.WriteLine($"Captue Time: ${sw.Elapsed}");
         }
     }
 
@@ -232,14 +236,6 @@ public partial class MainWindow : Window
         using var bitmap = SavePngSKBitmap(bmp);
         using var faceImage = bitmap.ToFaceImage();
 
-        // 人脸追踪的效果好像没有人脸识别的好，经常出现未追踪到任何人脸的情况。
-        var trackResult = await FaceTrack.TrackAsync(faceImage);
-        if (trackResult?.Any() != true)
-        {
-            Debug.WriteLine("未追踪到任何人脸！");
-            return;
-        }
-
         using var faceMark = new FaceLandmarker();
         var dpx = (float)(bitmap.Width / VideoImage.Width + bitmap.Height / VideoImage.Height);
 
@@ -253,20 +249,30 @@ public partial class MainWindow : Window
         paint.StrokeCap = SKStrokeCap.Round;
 
         canvas.Clear();
-        canvas.DrawBitmap(bitmap, 0, 0);
+        // canvas.DrawBitmap(bitmap, 0, 0);
 
-        foreach (var item in trackResult)
+        // 人脸追踪的效果好像没有人脸识别的好，经常出现未追踪到任何人脸的情况。
+        var trackResult = await FaceTrack.TrackAsync(faceImage);
+        if (trackResult?.Any() == true)
         {
-            var info = item.ToFaceInfo();
-            var left = info.Location.X;
-            var top = info.Location.Y;
-            var right = info.Location.X + info.Location.Width;
-            var bottom = info.Location.Y + info.Location.Height;
+            foreach (var item in trackResult)
+            {
+                var info = item.ToFaceInfo();
+                var left = info.Location.X;
+                var top = info.Location.Y;
+                var right = info.Location.X + info.Location.Width;
+                var bottom = info.Location.Y + info.Location.Height;
 
-            // 人脸定位
-            canvas.DrawRect(left, top, info.Location.Width, info.Location.Height, paint);
-            canvas.DrawText($"{item.Pid}", left, bottom + dpx * 12, paint);
+                // 人脸定位
+                canvas.DrawRect(left, top, info.Location.Width, info.Location.Height, paint);
+                canvas.DrawText($"{item.Pid}", left, bottom + dpx * 12, paint);
+            }
         }
+        else
+        {
+            Debug.WriteLine("未追踪到任何人脸！");
+        }
+
         using var rb = result.ToBitmap();
         VideoImage.Source = ToBitmapImage(rb); // 使用打标签的图片
     }
